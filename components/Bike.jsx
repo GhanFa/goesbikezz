@@ -28,7 +28,16 @@ const Bike = ({ bike }) => {
         </div>
         {/* button group */}
         <div className=" absolute bottom-0 right-0 top-0 left-0 flex justify-center items-center gap-[10px] opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <AddToCart btnStyles="btn-icon btn-accent" icon={<CgShoppingBag />} />
+          <AddToCart
+            id={bike._id}
+            name={bike.name}
+            currency="USD"
+            desc={bike.description}
+            images={bike.images}
+            price={bike.price}
+            btnStyles="btn-icon btn-accent"
+            icon={<CgShoppingBag />}
+          />
           <Link href={`/product/${bike.slug}`}>
             <button className="btn-icon btn-primary">
               <CgEye />

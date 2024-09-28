@@ -27,8 +27,11 @@ const PopularBikes = async () => {
       <div className="container mx-auto">
         <h2 className="text-center uppercase">Most Popular Bikes</h2>
         <p className="text-center mb-[30px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod
+          A high-quality bicycle has a lightweight, durable frame, smooth gears,
+          and responsive brakes. It offers excellent comfort with ergonomic
+          design, reliable suspension, and durable tires. Additional features
+          like integrated lighting and easy maintenance make it an ideal choice
+          for performance and comfort.
         </p>
         <PopularCarousel bikes={bikes} />
         <Link href="/our bikes">
