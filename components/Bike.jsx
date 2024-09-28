@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import AddToCart from "./AddToCart";
 import Link from "next/link";
-import { CgEye } from "react-icons/cg";
+import { CgEye, CgShoppingBag } from "react-icons/cg";
 
 const Bike = ({ bike }) => {
   const popularBikeCat = bike.categories.find(
@@ -28,8 +28,8 @@ const Bike = ({ bike }) => {
         </div>
         {/* button group */}
         <div className=" absolute bottom-0 right-0 top-0 left-0 flex justify-center items-center gap-[10px] opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <AddToCart btnStyles="btn btn-accent" />
-          <Link href={`/bikes/${bike.slug}`}>
+          <AddToCart btnStyles="btn-icon btn-accent" icon={<CgShoppingBag />} />
+          <Link href={`/product/${bike.slug}`}>
             <button className="btn-icon btn-primary">
               <CgEye />
             </button>
