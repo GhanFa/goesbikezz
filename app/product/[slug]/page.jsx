@@ -20,9 +20,7 @@ const getData = async (slug) => {
   name,
   description,
   "slug": slug.current,
-  "categories": categories[]-> {
-    name
-  }
+  "categories": categories[]-> {name}
   }`;
   const data = await client.fetch(query);
   return data;

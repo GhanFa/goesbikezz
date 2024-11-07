@@ -26,7 +26,7 @@ const PopularBikes = async () => {
     <section className="py-24">
       <div className="container mx-auto">
         <h2 className="text-center uppercase">Most Popular Bikes</h2>
-        <p className="text-center mb-[30px]">
+        <p className="text-center mb-[30px] w-3/4 mx-auto">
           A high-quality bicycle has a lightweight, durable frame, smooth gears,
           and responsive brakes. It offers excellent comfort with ergonomic
           design, reliable suspension, and durable tires. Additional features
@@ -34,7 +34,7 @@ const PopularBikes = async () => {
           for performance and comfort.
         </p>
         <PopularCarousel bikes={bikes} />
-        <Link href="/our bikes">
+        <Link href="/our-bikes">
           <button className="btn btn-accent mx-auto">View All</button>
         </Link>
       </div>

@@ -7,13 +7,13 @@ import { useShoppingCart } from "use-shopping-cart";
 const CartItem = (item) => {
   const { removeItem, incrementItem, decrementItem } = useShoppingCart();
   return (
-    <div className="flex justify-between items-center w-full h-[120px] mb-4 border-b">
-      <div className="w-[110px] h-[110px] relative ">
+    <div className="flex flex-col xs:flex-row justify-between items-center w-full h-[120px] mb-4 border-b gap-2">
+      <div className="w-[100px] h-[100px] relative flex self-center">
         {/* image */}
         <Image
           src={urlFor(item.item.images[0]).url()}
-          fill
-          sizes="(max-width:110px) 110px 110px"
+          width={100}
+          height={100}
           priority
           className="object-contain"
           alt={item.item.name}
