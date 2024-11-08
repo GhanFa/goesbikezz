@@ -23,6 +23,7 @@ const fetchProducts = async () => {
 
 const PopularBikes = async () => {
   const bikes = await fetchProducts();
+  console.log(bikes);
 
   if (!bikes || bikes.length === 0) {
     return (

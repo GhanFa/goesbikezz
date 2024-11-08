@@ -21,6 +21,7 @@ const OurBikes = async () => {
 
   try {
     products = await client.fetch(query);
+    console.log(products);
   } catch (error) {
     console.error("Error fetching product:", error);
     products = []; // Jika terjadi error, set produk menjadi array kosong
