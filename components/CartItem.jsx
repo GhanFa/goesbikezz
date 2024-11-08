@@ -7,7 +7,7 @@ import { useShoppingCart } from "use-shopping-cart";
 const CartItem = (item) => {
   const { removeItem, incrementItem, decrementItem } = useShoppingCart();
 
-  // console.log(item);
+  console.log(item);
   return (
     <div className="flex flex-col xs:flex-row justify-between items-center w-full h-[120px] mb-4 border-b gap-2">
       <div className="w-[100px] h-[100px] relative flex self-center">

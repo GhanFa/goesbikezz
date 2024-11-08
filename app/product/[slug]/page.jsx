@@ -54,6 +54,7 @@ const ProductDetails = ({ params }) => {
         }`;
 
         const data = await client.fetch(query);
+        console.log(data);
         setDetailProduct(data);
       } catch (error) {
         console.error("Error fetching product:", error);

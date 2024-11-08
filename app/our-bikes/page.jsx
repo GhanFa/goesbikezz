@@ -54,6 +54,8 @@ const OurBikes = () => {
   }, []);
   const bikes = product;
 
+  console.log(bikes);
+
   return (
     <div>{loading ? <LoadingSpinner /> : <BikeCategories bikes={bikes} />}</div>
   );
