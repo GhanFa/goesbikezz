@@ -1,9 +1,16 @@
 "use client";
 import { useShoppingCart } from "use-shopping-cart";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "./ui/sheet";
 import CartItem from "./CartItem";
 import { ScrollArea } from "./ui/scroll-area";
 import CheckoutBtn from "./CheckoutBtn";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 const CartSidebar = () => {
   const {
     cartCount,
@@ -20,6 +27,9 @@ const CartSidebar = () => {
           <SheetTitle className="text-left mb-12">
             My Cart({cartCount})
           </SheetTitle>
+          <VisuallyHidden.Root>
+            <SheetDescription>Description</SheetDescription>
+          </VisuallyHidden.Root>
         </SheetHeader>
         <>
           {cartCount === 0 ? (

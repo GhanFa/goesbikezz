@@ -30,6 +30,7 @@ const Bike = ({ bike }) => {
         <div className=" absolute bottom-0 right-0 top-0 left-0 flex justify-center items-center gap-[10px] opacity-0 group-hover:opacity-100 transition-all duration-300">
           <AddToCart
             price_id={bike.price_id}
+            // id={bike._id}
             name={bike.name}
             currency="USD"
             desc={bike.description}
