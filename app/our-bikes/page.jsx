@@ -1,61 +1,39 @@
-"use client";
 import { client } from "@/app/lib/sanity";
 import BikeCategories from "@/components/BikeCategories";
 import LoadingSpinner from "@/components/LoadingSpinner";
-import { useEffect, useState } from "react";
 
-// const getData = async () => {
-//   // const query = `*[_type == 'product']{
-//   //       _id,
-//   //       name,
-//   //       description,
-//   //       images,
-//   //       price,
-//   //       price_id,
-//   //       "slug":slug.current,
-//   //       "categories": categories[]-> {
-//   //         name
-//   //       }
-//   //   }`;
-//   // const data = await client.fetch(query);
-//   // return data;
-// };
+const OurBikes = async () => {
+  // Mengambil data produk dari API
+  const query = `*[_type == 'product']{
+    _id,
+    name,
+    description,
+    images,
+    price,
+    price_id,
+    "slug":slug.current,
+    "categories": categories[]-> {
+      name
+    }
+  }`;
 
-const OurBikes = () => {
-  const [product, setProduct] = useState([]);
-  const [loading, setLoading] = useState(true); // Tambahkan state loading
+  let products;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const query = `*[_type == 'product']{
-          _id,
-          name,
-          description,
-          images,
-          price,
-          price_id,
-          "slug":slug.current,
-          "categories": categories[]-> {
-            name
-          }
-      }`;
-
-        const data = await client.fetch(query);
-        setProduct(data);
-      } catch (error) {
-        console.error("Error fetching product:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-  const bikes = product;
+  try {
+    products = await client.fetch(query);
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    products = []; // Jika terjadi error, set produk menjadi array kosong
+  }
 
   return (
-    <div>{loading ? <LoadingSpinner /> : <BikeCategories bikes={bikes} />}</div>
+    <div>
+      {products.length === 0 ? (
+        <LoadingSpinner />
+      ) : (
+        <BikeCategories bikes={products} />
+      )}
+    </div>
   );
 };
 

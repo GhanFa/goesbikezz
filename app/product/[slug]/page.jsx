@@ -14,21 +14,6 @@ import {
 import { useEffect, useState } from "react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
-// const getData = async (slug) => {
-//   const query = `*[_type == 'product' && slug.current == '${slug}'][0] {
-//   _id,
-//   images,
-//   price,
-//   price_id,
-//   name,
-//   description,
-//   "slug": slug.current,
-//   "categories": categories[]-> {name}
-//   }`;
-//   const data = await client.fetch(query);
-//   return data;
-// };
-
 const ProductDetails = ({ params }) => {
   const [detailProduct, setDetailProduct] = useState(null);
   const [loading, setLoading] = useState(true); // Tambahkan state loading

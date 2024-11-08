@@ -20,7 +20,7 @@
   }
 
   h1 {
-    @apply text-5xl md:text-[80px] leading-none;
+    @apply text-5xl md:text-[80px] leading-snug md:leading-none;
   }
   h2 {
     @apply text-[40px];

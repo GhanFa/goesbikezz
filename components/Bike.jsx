@@ -23,6 +23,7 @@ const Bike = ({ bike }) => {
             src={urlFor(bike.images[0]).url()}
             width={280}
             height={147}
+            loading="lazy"
             alt={bike.name}
           />
         </div>

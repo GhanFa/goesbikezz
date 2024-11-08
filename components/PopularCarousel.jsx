@@ -4,9 +4,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import Bike from "./Bike";
-import SkeletonCard from "./SkeletonCard";
 
-const PopularCarousel = ({ bikes, loading }) => {
+const PopularCarousel = ({ bikes }) => {
+  console.log(bikes);
   return (
     <Swiper
       slidesPerView={1}
@@ -38,15 +38,6 @@ const PopularCarousel = ({ bikes, loading }) => {
           </SwiperSlide>
         );
       })}
-
-      {loading &&
-        Array(4)
-          .fill(0)
-          .map((_, index) => (
-            <SwiperSlide key={index}>
-              <SkeletonCard />
-            </SwiperSlide>
-          ))}
     </Swiper>
   );
 };

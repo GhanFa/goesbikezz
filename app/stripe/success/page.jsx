@@ -6,7 +6,7 @@ const SuccessPage = () => {
     <section className="py-72">
       <div className="container mx-auto">
         <h2 className="text-center mb-4">
-          Your Payment was <span className="text-green-600">Successful!</span>{" "}
+          Your Payment was <span className="text-green-600">Successful!</span>
           Thank you!
         </h2>
         <Link href="/">

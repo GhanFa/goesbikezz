@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "./ui/label";
 import { Slider } from "./ui/slider";
-import { urlFor } from "@/app/lib/sanity";
 import Bike from "./Bike";
 
 const BikeCategories = ({ bikes }) => {
