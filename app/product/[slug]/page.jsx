@@ -14,23 +14,8 @@ import {
 import { useEffect, useState } from "react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
-// const getData = async (slug) => {
-//   const query = `*[_type == 'product' && slug.current == '${slug}'][0] {
-//   _id,
-//   images,
-//   price,
-//   price_id,
-//   name,
-//   description,
-//   "slug": slug.current,
-//   "categories": categories[]-> {name}
-//   }`;
-//   const data = await client.fetch(query);
-//   return data;
-// };
-
 const ProductDetails = ({ params }) => {
-  const [detailProduct, setDetailProduct] = useState(null);
+  const [detailProduct, setDetailProduct] = useState({});
   const [loading, setLoading] = useState(true); // Tambahkan state loading
   const slug = params.slug;
 
@@ -54,7 +39,6 @@ const ProductDetails = ({ params }) => {
         }`;
 
         const data = await client.fetch(query);
-        console.log(data);
         setDetailProduct(data);
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -72,6 +56,7 @@ const ProductDetails = ({ params }) => {
 
   // const bike = await getData(params.slug);
   const bike = detailProduct;
+  console.log("Detail Product:", bike);
   return (
     <section className="pt-24 pb-32">
       <div className="container mx-auto">
@@ -110,27 +95,6 @@ const ProductDetails = ({ params }) => {
               />
             </div>
             {/* info */}
-            <div className=" flex flex-col gap-4">
-              <div className="flex gap-2">
-                <PackageCheck size={20} className="text-accent" />
-                <p className="ml-2">Free Shipping</p>
-              </div>
-              <div className="flex gap-2">
-                <RefreshCw size={20} className="text-accent" />
-                <p className="ml-2">Free Return for 30 days</p>
-              </div>
-              <div className="flex gap-2">
-                <Bike size={20} className="text-accent" />
-                <p className="ml-2">
-                  The bicycles are partially assembled and benefit from
-                  transport insurance
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <Clock size={20} className="text-accent" />
-                <p className="ml-2">Fast Delivery</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -139,3 +103,23 @@ const ProductDetails = ({ params }) => {
 };
 
 export default ProductDetails;
+<div className=" flex flex-col gap-4">
+  <div className="flex gap-2">
+    <PackageCheck size={20} className="text-accent" />
+    <p className="ml-2">Free Shipping</p>
+  </div>
+  <div className="flex gap-2">
+    <RefreshCw size={20} className="text-accent" />
+    <p className="ml-2">Free Return for 30 days</p>
+  </div>
+  <div className="flex gap-2">
+    <Bike size={20} className="text-accent" />
+    <p className="ml-2">
+      The bicycles are partially assembled and benefit from transport insurance
+    </p>
+  </div>
+  <div className="flex gap-2">
+    <Clock size={20} className="text-accent" />
+    <p className="ml-2">Fast Delivery</p>
+  </div>
+</div>;

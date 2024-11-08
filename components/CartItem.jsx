@@ -1,5 +1,6 @@
 import { urlFor } from "@/app/lib/sanity";
 import Image from "next/image";
+import { use, useEffect } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
 import { useShoppingCart } from "use-shopping-cart";
@@ -7,7 +8,7 @@ import { useShoppingCart } from "use-shopping-cart";
 const CartItem = (item) => {
   const { removeItem, incrementItem, decrementItem } = useShoppingCart();
 
-  console.log(item);
+  console.log("Cart Item:", item);
   return (
     <div className="flex flex-col xs:flex-row justify-between items-center w-full h-[120px] mb-4 border-b gap-2">
       <div className="w-[100px] h-[100px] relative flex self-center">

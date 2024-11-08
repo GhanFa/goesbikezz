@@ -3,6 +3,7 @@ import { useShoppingCart } from "use-shopping-cart";
 
 const CheckoutBtn = () => {
   const [loading, setLoading] = useState(false);
+  const { redirectToCheckout } = useShoppingCart();
   const handleCheckout = async () => {
     try {
       setLoading(true);
@@ -14,7 +15,7 @@ const CheckoutBtn = () => {
       setLoading(false);
     }
   };
-  const { redirectToCheckout } = useShoppingCart();
+
   return (
     <div>
       <button

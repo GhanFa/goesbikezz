@@ -37,7 +37,7 @@ const PopularBikes = () => {
   }, []);
 
   const bikes = products;
-  console.log(bikes);
+  console.log("popoular bikes", bikes);
 
   return (
     <section className="py-24">

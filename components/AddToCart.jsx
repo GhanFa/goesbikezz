@@ -7,13 +7,13 @@ const AddToCart = ({ text, btnStyles, icon, ...props }) => {
   const { addItem } = useShoppingCart();
   const { toast } = useToast();
   const bike = {
-    id: props.id,
+    price_id: props.price_id,
     name: props.name,
     price: props.price,
     description: props.desc,
     images: props.images,
-    price_id: props.price_id,
   };
+  console.log("Bike to add:", bike);
 
   return (
     <button
