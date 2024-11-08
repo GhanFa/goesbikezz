@@ -13,10 +13,10 @@ const Hero = () => {
               Where <span className="text-accent">Joyful</span> Cycling Begins
             </h1>
             <p className="mb-10 text-lg max-w-[508px] mx-auto text-center xl:text-left xl:mx-0">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis
-              exercitationem perspiciatis saepe voluptatum velit dicta sed.
-              Natus omnis laudantium corporis harum soluta voluptas perspiciatis
-              doloremque, tempore neque rem quod error.
+              Enjoy the thrill of cycling with the best bicycles designed for
+              comfort and high performance! Now is the time to improve your
+              healthy lifestyle with a premium quality bicycle that is ready to
+              accompany your journey.
             </p>
             {/* btn group */}
             <div className="flex gap-4 mx-auto xl:mx-0">
@@ -37,6 +37,7 @@ const Hero = () => {
               width={860}
               height={480}
               quality={100}
+              priority
               className="object-contain scale-x-[-1]"
             />
           </div>

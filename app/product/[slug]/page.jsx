@@ -1,3 +1,4 @@
+"use client";
 import { client, urlFor } from "@/app/lib/sanity";
 import Image from "next/image";
 import AddToCart from "../../../components/AddToCart";
@@ -10,31 +11,72 @@ import {
   ChevronLeft,
   Bike,
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
-const getData = async (slug) => {
-  const query = `*[_type == 'product' && slug.current == '${slug}'][0] {
-  _id,
-  images,
-  price,
-  price_id,
-  name,
-  description,
-  "slug": slug.current,
-  "categories": categories[]-> {name}
-  }`;
-  const data = await client.fetch(query);
-  return data;
-};
+// const getData = async (slug) => {
+//   const query = `*[_type == 'product' && slug.current == '${slug}'][0] {
+//   _id,
+//   images,
+//   price,
+//   price_id,
+//   name,
+//   description,
+//   "slug": slug.current,
+//   "categories": categories[]-> {name}
+//   }`;
+//   const data = await client.fetch(query);
+//   return data;
+// };
 
-const ProductDetails = async ({ params }) => {
-  const bike = await getData(params.slug);
-  console.log(bike);
+const ProductDetails = ({ params }) => {
+  const [detailProduct, setDetailProduct] = useState(null);
+  const [loading, setLoading] = useState(true); // Tambahkan state loading
+  const slug = params.slug;
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchProduct = async () => {
+      if (!slug) {
+        setLoading(false);
+        return;
+      }
+      try {
+        const query = `*[_type == 'product' && slug.current == '${slug}'][0] {
+          _id,
+          images,
+          price,
+          price_id,
+          name,
+          description,
+          "slug": slug.current,
+          "categories": categories[]-> {name}
+        }`;
+
+        const data = await client.fetch(query);
+        setDetailProduct(data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        setError("Failed to load product. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [slug]);
+
+  if (loading) return <LoadingSpinner />;
+  if (!detailProduct) return <div>Product not found."</div>;
+
+  // const bike = await getData(params.slug);
+  const bike = detailProduct;
   return (
     <section className="pt-24 pb-32">
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-14">
           {/* img */}
-          <div className="xl:flex-1 h-[460px] bg-primary/5 xl:w-[700px] xl:h-[540px] flex justify-center items-center items-center">
+          <div className="xl:flex-1 h-[460px] bg-primary/5 xl:w-[700px] xl:h-[540px] flex justify-center items-center">
             <Image
               src={urlFor(bike.images[0]).url()}
               width={473}
@@ -55,7 +97,16 @@ const ProductDetails = async ({ params }) => {
                 <p className="text-lg font-semibold">${bike.price}</p>
               </div>
               <p>{bike.description}</p>
-              <AddToCart text="Add to cart" btnStyles="btn btn-accent" />
+              <AddToCart
+                price_id={bike.price_id}
+                name={bike.name}
+                currency="USD"
+                desc={bike.description}
+                images={bike.images}
+                price={bike.price}
+                text="Add to cart"
+                btnStyles="btn btn-accent"
+              />
             </div>
             {/* info */}
             <div className=" flex flex-col gap-4">

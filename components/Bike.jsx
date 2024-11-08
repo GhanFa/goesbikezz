@@ -29,7 +29,7 @@ const Bike = ({ bike }) => {
         {/* button group */}
         <div className=" absolute bottom-0 right-0 top-0 left-0 flex justify-center items-center gap-[10px] opacity-0 group-hover:opacity-100 transition-all duration-300">
           <AddToCart
-            id={bike._id}
+            price_id={bike.price_id}
             name={bike.name}
             currency="USD"
             desc={bike.description}
@@ -45,7 +45,7 @@ const Bike = ({ bike }) => {
           </Link>
         </div>
       </div>
-      <h5 className="mb-2 text-gray-400 font-semibold capitalize">
+      <h5 className="mb-2 text-gray-500 font-semibold capitalize">
         {bike.categories[0].name} bike
       </h5>
       <h4 className="mb-1">{bike.name}</h4>
